@@ -1,10 +1,16 @@
-	<html>
+	<html ng-app="store">
 	<head>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+		<script type="text/javascript" src="angular.min.js"></script>
+		<script type="text/javascript" src="functions.js"></script>
 	</head>
-		<body class="body">
-	<div>
-
+		<body class="body" ng-controller="StoreController as store">
+	<div ng-repeat="product in store.products | orderBy:'price'">
+		<h1>{{product.name | uppercase}}</h1>
+		<h4>{{product.description}}</h2>
+		<h6>{{product.price | currency }}</h3>
+			<button ng-show="product.canPurchase">Add to cart</button>
 	</div>	
+	<!-- can use "!"(ng-show) instead of hide -->	
 	</body>
 	</html>
